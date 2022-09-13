@@ -55,13 +55,16 @@ body {
 .mainRow {
     display: flex;
     flex-direction: row;
-    flex-grow: 0;
+    flex-grow: 1;
     align-content: stretch;
 }
 
 .mainButton {
     display: flex;
+    align-items: center;
+    justify-content: center;
     align-content: stretch;
+    flex-grow: 1;
 }
 
 .zero {
@@ -71,7 +74,16 @@ body {
 .calcRightButtons {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     width: 80px;
+}
+
+.RightButton {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;  
 }
 
 .footer {

@@ -23,11 +23,12 @@ body {
 }
 
 .appContainer {
-
+ width: 310px;
+ height: 420px;
 } 
 
 .calcDisplay {
-
+    height: 50px;
 }
 
 .memoryDisplay {
@@ -37,25 +38,40 @@ body {
 .calcAllButtons {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
+    align-content: stretch;
+    flex-grow: 0;
+    width: 310px;
+    height: 370px;
 }
 
 .calcMainButtons {
-
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    width: 230px;
 }
 
-.mainRow5 {
+.mainRow {
     display: flex;
     flex-direction: row;
+    flex-grow: 0;
+    align-content: stretch;
+}
+
+.mainButton {
+    display: flex;
+    align-content: stretch;
 }
 
 .zero {
     display: flex;
-    flex-grow: 1;
 }
 
 .calcRightButtons {
     display: flex;
     flex-direction: column;
+    width: 80px;
 }
 
 .footer {

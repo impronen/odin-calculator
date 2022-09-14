@@ -1,6 +1,12 @@
 // Global variables
 let result = "";
 
+let displayNum = 0;
+let memDisplayArray = ["0"];
+
+document.getElementById("currentNumber").innerHTML = displayNum;
+document.getElementById("memDisplayArray").innerHTML = memDisplayArray;
+
 //Basic functions
 function add(a, b) {return a + b}
 
@@ -27,4 +33,10 @@ switch (operator) {
         break;
 }
 return result
+}
+
+//Function to populate display w/ chosen digit
+function populateDisp(num) {
+    displayNum = num;
+    document.getElementById("currentNumber").innerHTML = displayNum;
 }

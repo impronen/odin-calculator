@@ -17,9 +17,9 @@
 
     <div class="appContainer">
 
-      <div class="calcDisplay"> <!-- display -->
-        <div class="memoryDisplay">1+2</div>
-        <div class="mainDisplay">5</div>
+      <div class="calcDisplay"> <!-- display part -->
+        <div class="memoryDisplay"><span id ="memDisplayArray"></div>
+        <div class="mainDisplay"><span id ="currentNumber"></div>
       </div>
       <div class="calcAllButtons"><!-- container for all buttons -->
       <div class="calcMainButtons"> <!-- main buttons, numbers & del etc -->
@@ -28,27 +28,27 @@
           <button class="mainButton">+/-</button>
         </div>
         <div class="mainRow">
-          <button class="mainButton">7</button>
-          <button class="mainButton">8</button>
-          <button class="mainButton">9</button>
+          <button class="mainButton" onclick="populateDisp(7)">7</button>
+          <button class="mainButton" onclick="populateDisp(8)">8</button>
+          <button class="mainButton" onclick="populateDisp(9)">9</button>
         </div>
         <div class="mainRow">
-          <button class="mainButton">4</button>
-          <button class="mainButton">5</button>
-          <button class="mainButton">6</button>
+          <button class="mainButton" onclick="populateDisp(4)">4</button>
+          <button class="mainButton" onclick="populateDisp(5)">5</button>
+          <button class="mainButton" onclick="populateDisp(6)">6</button>
         </div>
         <div class="mainRow">
-          <button class="mainButton">1</button>
-          <button class="mainButton">2</button>
-          <button class="mainButton">3</button>
+          <button class="mainButton" onclick="populateDisp(1)">1</button>
+          <button class="mainButton" onclick="populateDisp(2)">2</button>
+          <button class="mainButton" onclick="populateDisp(3)">3</button>
         </div>
         <div class="mainRow">
-          <button class="mainButton zero">0</button>
+          <button class="mainButton zero" onclick="populateDisp(0)">0</button>
           <button class="mainButton">,</button>
         </div>
       </div>
       
-      <div class="calcRightButtons"> <!-- operator buttons -->
+      <div class="calcRightButtons"> <!-- operator buttons / horizontally -->
         <button class="RightButton">/</button>
         <button class="RightButton">x</button>
         <button class="RightButton">-</button>

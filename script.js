@@ -45,6 +45,17 @@ function populateDisp(num) {
 document.getElementById("currentNumber").innerHTML = displayNum;
 };
 
+//Change negative/positive
+
+function negativePositive(displayNum) {
+    if (displayNum < 0) {
+        displayNum = -displayNum
+    } else {
+        displayNum = -displayNum
+    }
+    document.getElementById("currentNumber").innerHTML = displayNum;
+}
+
 //Clear display
 function clearMem(){
     displayNum = 0;

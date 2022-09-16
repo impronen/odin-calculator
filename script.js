@@ -49,11 +49,12 @@ document.getElementById("currentNumber").innerHTML = displayNum;
 
 function negativePositive(displayNum) {
     if (displayNum < 0) {
-        displayNum = -displayNum
+        displayNum = displayNum * -1;
+        document.getElementById("currentNumber").innerHTML = displayNum;
     } else {
         displayNum = -displayNum
+        document.getElementById("currentNumber").innerHTML = displayNum;
     }
-    document.getElementById("currentNumber").innerHTML = displayNum;
 }
 
 //Clear display

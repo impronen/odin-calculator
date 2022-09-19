@@ -78,12 +78,15 @@ document.getElementById("currentNumber").innerHTML = displayNum;
 
 //Change negative/positive
 
-function negativePositive(displayNum) {
+function negativePositive(num) {
     if (displayNum < 0) {
-        displayNum = Math.abs(displayNum);
+        num = Math.abs(displayNum);
+        console.log(num);
+        displayNum = num
         console.log(displayNum);
     } else if (displayNum > 0) {
-        displayNum = -displayNum
+        num = -displayNum
+        displayNum = num
         console.log(displayNum);
     } else {
 

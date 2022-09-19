@@ -14,11 +14,12 @@ subtract = (a, b) => {return a - b}
 multiply = (a, b) => {return a * b}
 divide = (a, b) => {return a / b}
 
-//Function to select the operator
+//Function to select the operator & move the displayNum & operator to  memDisplayArray
 selectOperator = (a) => {operator = a
-    console.log(memDisplayArray)
-    if (memDisplayArray === ["0"]){
-    memDisplayArray.shift()}
+    
+    if (memDisplayArray[0] == ['0']){
+    memDisplayArray.shift()
+    }
     memDisplayArray.push(displayNum, operator)
     document.getElementById("memDisplayArray").innerHTML = memDisplayArray.join(' ');
     displayNum = 0;
@@ -26,7 +27,6 @@ selectOperator = (a) => {operator = a
 }
 
 //Function to take input and operator and do the calculation
-
 function calclulation (displayNum, operator) {
     if (memDisplayArray === 0) {
         memDisplayArray = [];

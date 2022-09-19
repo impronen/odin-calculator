@@ -15,15 +15,15 @@ multiply = (a, b) => {return a * b}
 divide = (a, b) => {return a / b}
 
 //Function to select the operator & move the displayNum & operator to  memDisplayArray
-selectOperator = (a) => {operator = a
-    
-    if (memDisplayArray[0] == ['0']){
-    memDisplayArray.shift() //Remove initial value of zero from array
-    }
+selectOperator = (a) => {operator = a  
+    if (memDisplayArray[0] == ['0']){memDisplayArray.shift()} //Remove initial value of zero from array  
+    if (displayNum === 0){} // Does not add zeroes to memory array
+    else {
     displayToMem(displayNum);
     operatorToMem(operator);   
     document.getElementById("currentNumber").innerHTML = displayNum;
     document.getElementById("memDisplayArray").innerHTML = memDisplayArray.join(' '); //Displays the updated array without commas
+}
 }
 
 //Subfunction to push displayNum value to memDisplayArray
@@ -42,6 +42,11 @@ function calculation (memDisplayArray, displayNum) {
     usedArray.forEach(element => {
         console.log(element)
     });
+}
+
+//Looping the memory to find Nan values (operators) and using them as a starting point on what to feed to operate function
+function loopTheMemory(){
+    memDisplayArray.map
 }
 
 // Function to call calculations by operator
@@ -66,8 +71,7 @@ return result
 //Function to populate display w/ chosen digit
 function populateDisp(num) {
     if (displayNum === 0){
-    displayNum = num;
-    
+    displayNum = num; 
 } else {
     displayNum = '' + displayNum + num; //Concatenate 
     let a = parseInt(displayNum); //Convert back to integer
@@ -81,16 +85,11 @@ document.getElementById("currentNumber").innerHTML = displayNum;
 function negativePositive(num) {
     if (displayNum < 0) {
         num = Math.abs(displayNum);
-        console.log(num);
         displayNum = num
-        console.log(displayNum);
     } else if (displayNum > 0) {
         num = -displayNum
         displayNum = num
-        console.log(displayNum);
-    } else {
-
-    }
+    } else {}
     document.getElementById("currentNumber").innerHTML = displayNum;
 }
 

@@ -1,5 +1,6 @@
 // Global variables
 let result = "";
+let operator = "";
 
 let displayNum = 0;
 let memDisplayArray = ["0"];
@@ -8,10 +9,19 @@ document.getElementById("currentNumber").innerHTML = displayNum;
 document.getElementById("memDisplayArray").innerHTML = memDisplayArray;
 
 //Basic functions
-function add(a, b) {return a + b}
-function subtract(a, b) {return a - b}
-function multiply(a, b) {return a * b}
-function divide(a, b) {return a / b}
+add = (a, b) => {return a + b}
+subtract = (a, b) => {return a - b}
+multiply = (a, b) => {return a * b}
+divide = (a, b) => {return a / b}
+
+//Function to select the operator
+selectOperator = (a) => {return operator = a }
+
+//Function to take input and operator and do the calculation
+
+function calclulation (displayNum, operator, memDisplayArray) {
+    memDisplayArray.push(displayNum, operator)
+}
 
 // Function to call calculations by operator
 function operate(operator){
@@ -49,12 +59,15 @@ document.getElementById("currentNumber").innerHTML = displayNum;
 
 function negativePositive(displayNum) {
     if (displayNum < 0) {
-        displayNum = displayNum * -1;
-        document.getElementById("currentNumber").innerHTML = displayNum;
-    } else {
+        displayNum = Math.abs(displayNum);
+        console.log(displayNum);
+    } else if (displayNum > 0) {
         displayNum = -displayNum
-        document.getElementById("currentNumber").innerHTML = displayNum;
+        console.log(displayNum);
+    } else {
+
     }
+    document.getElementById("currentNumber").innerHTML = displayNum;
 }
 
 //Clear display

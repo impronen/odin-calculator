@@ -23,8 +23,7 @@ selectOperator = (a) => {operator = a
     operatorToMem(operator);   
     document.getElementById("currentNumber").innerHTML = displayNum;
     document.getElementById("memDisplayArray").innerHTML = memDisplayArray.join(' '); //Displays the updated array without commas
-}
-}
+}}
 
 //Subfunction to push displayNum value to memDisplayArray
 displayToMem = (displayNum) => {memDisplayArray.push(displayNum)}
@@ -34,19 +33,15 @@ operatorToMem = (operator) => {memDisplayArray.push(operator)
     displayNum = 0; //Resets to zero in order to take in new number 
 }
 
-//Function to take input and operator and do the calculation 
-function calculation (memDisplayArray, displayNum) {
-    memDisplayArray.push(displayNum)
-    document.getElementById("memDisplayArray").innerHTML = memDisplayArray.join(' ');
-    let usedArray = memDisplayArray;
-    usedArray.forEach(element => {
-        console.log(element)
-    });
-}
 
 //Looping the memory to find Nan values (operators) and using them as a starting point on what to feed to operate function
-function loopTheMemory(){
-    memDisplayArray.map
+function loopTheMemory(memDisplayArray){
+    let initialValue = 0;
+    const resultWithInitial = memDisplayArray.reduce(
+        (previousValue, currentValue) => previousValue + currentValue, 
+        initialValue
+    );
+console.log(resultWithInitial) 
 }
 
 // Function to call calculations by operator

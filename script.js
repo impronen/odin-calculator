@@ -15,12 +15,23 @@ multiply = (a, b) => {return a * b}
 divide = (a, b) => {return a / b}
 
 //Function to select the operator
-selectOperator = (a) => {return operator = a }
+selectOperator = (a) => {operator = a
+    console.log(memDisplayArray)
+    if (memDisplayArray === ["0"]){
+    memDisplayArray.shift()}
+    memDisplayArray.push(displayNum, operator)
+    document.getElementById("memDisplayArray").innerHTML = memDisplayArray.join(' ');
+    displayNum = 0;
+    document.getElementById("currentNumber").innerHTML = displayNum;
+}
 
 //Function to take input and operator and do the calculation
 
-function calclulation (displayNum, operator, memDisplayArray) {
-    memDisplayArray.push(displayNum, operator)
+function calclulation (displayNum, operator) {
+    if (memDisplayArray === 0) {
+        memDisplayArray = [];
+    }
+    memDisplayArray.push(displayNum, operator);
 }
 
 // Function to call calculations by operator

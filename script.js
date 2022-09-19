@@ -18,20 +18,33 @@ divide = (a, b) => {return a / b}
 selectOperator = (a) => {operator = a
     
     if (memDisplayArray[0] == ['0']){
-    memDisplayArray.shift()
+    memDisplayArray.shift() //Remove initial value of zero from array
     }
-    memDisplayArray.push(displayNum, operator)
-    document.getElementById("memDisplayArray").innerHTML = memDisplayArray.join(' ');
-    displayNum = 0;
+    displayToMem(displayNum);
+    operatorToMem(operator);   
     document.getElementById("currentNumber").innerHTML = displayNum;
+    document.getElementById("memDisplayArray").innerHTML = memDisplayArray.join(' '); //Displays the updated array without commas
+}
+
+//Subfunction to push displayNum value to memDisplayArray
+displayToMem = (displayNum) => {
+    memDisplayArray.push(displayNum)
+}
+
+//Subfunction to push operator value to memDisplayArray
+operatorToMem = (operator) => {
+    memDisplayArray.push(operator)
+    displayNum = 0; //Resets to zero in order to take in new number 
 }
 
 //Function to take input and operator and do the calculation
-function calclulation (displayNum, operator) {
-    if (memDisplayArray === 0) {
-        memDisplayArray = [];
-    }
-    memDisplayArray.push(displayNum, operator);
+function calculation (memDisplayArray, displayNum) {
+    memDisplayArray.push(displayNum)
+    document.getElementById("memDisplayArray").innerHTML = memDisplayArray.join(' ');
+    let usedArray = memDisplayArray;
+    usedArray.forEach(element => {
+        console.log(element)
+    });
 }
 
 // Function to call calculations by operator

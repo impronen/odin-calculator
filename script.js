@@ -27,17 +27,14 @@ selectOperator = (a) => {operator = a
 }
 
 //Subfunction to push displayNum value to memDisplayArray
-displayToMem = (displayNum) => {
-    memDisplayArray.push(displayNum)
-}
+displayToMem = (displayNum) => {memDisplayArray.push(displayNum)}
 
 //Subfunction to push operator value to memDisplayArray
-operatorToMem = (operator) => {
-    memDisplayArray.push(operator)
+operatorToMem = (operator) => {memDisplayArray.push(operator) 
     displayNum = 0; //Resets to zero in order to take in new number 
 }
 
-//Function to take input and operator and do the calculation
+//Function to take input and operator and do the calculation 
 function calculation (memDisplayArray, displayNum) {
     memDisplayArray.push(displayNum)
     document.getElementById("memDisplayArray").innerHTML = memDisplayArray.join(' ');

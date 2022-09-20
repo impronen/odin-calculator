@@ -5,6 +5,8 @@ let operator = "";
 let displayNum = 0;
 let memDisplayArray = ["0"];
 
+let results = 0;
+
 document.getElementById("currentNumber").innerHTML = displayNum;
 document.getElementById("memDisplayArray").innerHTML = memDisplayArray;
 
@@ -36,16 +38,15 @@ operatorToMem = (operator) => {memDisplayArray.push(operator)
 
 //Looping the memory to find Nan values (operators) and using them as a starting point on what to feed to operate function
 function loopTheMemory(memDisplayArray){
-    let initialValue = 0;
-    const resultWithInitial = memDisplayArray.reduce(
-        (previousValue, currentValue) => previousValue + currentValue, 
-        initialValue
-    );
-console.log(resultWithInitial) 
+        results = memDisplayArray.reduce((endResult, arrayItem) => {
+            console.log(endResult)
+            if (Number.isInteger(arrayItem)) return endResult + arrayItem
+            else {console.log(arrayItem)}
+        }, 0)
 }
 
 // Function to call calculations by operator
-function operate(operator){
+function operate(operator, a, b){
 switch (operator) {
     case "+":
         result = add(a, b);

@@ -37,6 +37,15 @@ operatorToMem = (operator) => {memDisplayArray.push(operator)
     displayNum = 0; //Resets to zero in order to take in new number 
 }
 
+//Calculate 
+
+function calculate() {
+    displayToMem(displayNum); 
+    loopTheMemory(memDisplayArray)
+    document.getElementById("currentNumber").innerHTML = displayNum;
+    document.getElementById("memDisplayArray").innerHTML = memDisplayArray.join(' ')
+    resetActiveNumbers()
+}
 
 //Looping the memory to find Nan values (operators) and using them as a starting point on what to feed to operate function
 function loopTheMemory(memDisplayArray){
@@ -50,7 +59,7 @@ function loopTheMemory(memDisplayArray){
         console.log(operator, num1, num2)
         displayNum = result
         document.getElementById("currentNumber").innerHTML = displayNum;
-        resetActiveNumbers()
+        
 }
 
 //Function to reset num1, num2 and operator

@@ -5,6 +5,8 @@ let operator = "";
 let displayNum = 0;
 let memDisplayArray = ["0"];
 
+let num1 = 0;
+let num2  = 0;
 let results = 0;
 
 document.getElementById("currentNumber").innerHTML = displayNum;
@@ -40,25 +42,38 @@ operatorToMem = (operator) => {memDisplayArray.push(operator)
 function loopTheMemory(memDisplayArray){
         results = memDisplayArray.reduce((endResult, arrayItem) => {
             console.log(endResult)
-            if (Number.isInteger(arrayItem)) return endResult + arrayItem
-            else {console.log(arrayItem)}
+            if (Number.isInteger(arrayItem) && endResult === 0) num1 = arrayItem
+            else if (Number.isInteger(arrayItem)) num2 = arrayItem
+            else operator = arrayItem
+            operate(operator, num1, num2)
         }, 0)
+        console.log(operator, num1, num2)
+        displayNum = result
+        document.getElementById("currentNumber").innerHTML = displayNum;
+        resetActiveNumbers()
+}
+
+//Function to reset num1, num2 and operator
+function resetActiveNumbers(){
+    num1 = 0;
+    num2  = 0;
+    operator = "";
 }
 
 // Function to call calculations by operator
-function operate(operator, a, b){
+function operate(operator, num1, num2){
 switch (operator) {
     case "+":
-        result = add(a, b);
+        result = add(num1, num2);
         break;
     case "-":
-        result = subtract(a, b);
+        result = subtract(num1, num2);
         break;
-    case "*":
-        result = multiply(a, b);
+    case "x":
+        result = multiply(num1, num2);
         break;
     case "/":
-        result = divide(a, b);
+        result = divide(num1, num2);
         break;
 }
 return result
@@ -91,6 +106,7 @@ function negativePositive(num) {
 
 //Clear display
 function clearMem(){
+    resetActiveNumbers()
     displayNum = 0;
     memDisplayArray = ["0"];
     result = "";

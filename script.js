@@ -4,7 +4,6 @@ let operator = "";
 
 let displayNum = 0;
 let memDisplayArray = ["0"];
-let memDisplayArray2 = ["0"];
 
 let num1 = 0;
 let num2  = 0;
@@ -20,12 +19,19 @@ multiply = (a, b) => {return a * b}
 divide = (a, b) => {return a / b}
 
 //Function to select the operator & move the displayNum & operator to  memDisplayArray
-selectOperator = (a) => {operator = a  
+selectOperator = (a) => {
+    
     if (memDisplayArray[0] == ['0']){memDisplayArray.shift()} //Remove initial value of zero from array  
     if (displayNum === 0){} // Does not add zeroes to memory array
-    else {
+    
+    else if (memDisplayArray[1] === operator){
+    calculate()
+    operator = a
+    }
+    else { console.log("ELSE")
+    operator = a
     displayToMem(displayNum);
-    operatorToMem(operator);   
+    operatorToMem(operator);
     document.getElementById("currentNumber").innerHTML = displayNum;
     document.getElementById("memDisplayArray").innerHTML = memDisplayArray.join(' '); //Displays the updated array without commas
 }}
@@ -43,41 +49,25 @@ operatorToMem = (operator) => {memDisplayArray.push(operator)
 function calculate() {
     displayToMem(displayNum); 
     loopTheMemory(memDisplayArray)
+    document.getElementById("currentNumber").innerHTML = displayNum;
     document.getElementById("memDisplayArray").innerHTML = memDisplayArray.join(' ')
-    document.getElementById("currentNumber").innerHTML = displayNum; 
     resetActiveNumbers()
 }
 
-//Looping the memory to find Nan values (operators) and using them as a starting point on what to feed to operate function
+//Looping the memory to find  values to feed to operate function
 function loopTheMemory(memDisplayArray){
-    memDisplayArray2 = memDisplayArray;
-        results = memDisplayArray.reduce((endResult, arrayItem, index) => {
-            console.log(num1)
-            if (Number.isInteger(arrayItem) && endResult === 0){ 
-                num1 = arrayItem;
-                delete memDisplayArray[index]
-                console.log(memDisplayArray)
-            }
-            else if (Number.isInteger(arrayItem)) {num2 = arrayItem
-                delete memDisplayArray[index]
-            }
-            else {operator = arrayItem
-                delete memDisplayArray[index]
-            }
-        operate(operator, num1, num2)
+        results = memDisplayArray.reduce((endResult, arrayItem) => {
+            console.log(endResult)
+            if (Number.isInteger(arrayItem) && endResult === 0) num1 = arrayItem
+            else if (Number.isInteger(arrayItem)) num2 = arrayItem
+            else operator = arrayItem
+            operate(operator, num1, num2)
         }, 0)
         console.log(operator, num1, num2)
         displayNum = result
         document.getElementById("currentNumber").innerHTML = displayNum;
+        
 }
-
-
-function arrayRemoval(arrayItem) {
-    let index = arrayItem.indexOf(arrayItem);
-    console.log(index)
-}
-
-
 
 //Function to reset num1, num2 and operator
 function resetActiveNumbers(){

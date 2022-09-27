@@ -23,6 +23,9 @@ selectOperator = (a) => {
     
     if (memDisplayArray[0] == []){} //Remove initial value of zero from array  
     if (displayNum === 0){} // Does not add zeroes to memory array
+    if (memDisplayArray[2] === []) {
+        // make something that just updates the array / or display with resul + operator
+    } 
     
     else if (memDisplayArray[1] === operator){ // If operator has been declared
     console.log("ELSE IF")

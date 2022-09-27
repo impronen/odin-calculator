@@ -50,7 +50,6 @@ operatorToMem = (operator) => {memDisplayArray.push(operator)
 }
 
 //Calculate 
-
 function calculate() {
     displayToMem(displayNum); 
     populateOperate();
@@ -64,7 +63,7 @@ function calculate() {
     
 }
 
-
+//Function to populate variables used in operate() function with values from memDisplayArray
 function populateOperate() {
     num1 = memDisplayArray[0]
     operator = memDisplayArray[1]

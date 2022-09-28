@@ -27,22 +27,13 @@ selectOperator = (a) => {
     calculate()
     operator = a
     operatorToMem(operator);
-    }
-    else { //If no operator has been declared, ie. the user has entered one number and presses operator
+    } else { //If no operator has been declared, ie. the user has entered one number and presses operator
     operator = a
     displayToMem(displayNum);
     operatorToMem(operator);
     document.getElementById("currentNumber").innerHTML = displayNum;
     document.getElementById("memDisplayArray").innerHTML = memDisplayArray.join(' '); //Displays the updated array without commas
 }}
-
-//Subfunction to push displayNum value to memDisplayArray
-displayToMem = (displayNum) => {memDisplayArray.push(displayNum)}
-
-//Subfunction to push operator value to memDisplayArray
-operatorToMem = (operator) => {memDisplayArray.push(operator) 
-    displayNum = 0; //Resets to zero in order to take in new number 
-}
 
 //Calculate 
 function calculate() {
@@ -54,10 +45,13 @@ function calculate() {
     }
     displayNum = result
     document.getElementById("currentNumber").innerHTML = displayNum;
+    document.getElementById("memDisplayArray").innerHTML = (`${num1} ${operator} ${num2} = ${result}`)
     resetActiveNumbers();
-    memDisplayArray.splice(0, 1, result); //Splice the result as the index [0] of the array. 
-    memDisplayArray.splice(1, 5); //Clears the rest of the array
-    document.getElementById("memDisplayArray").innerHTML = memDisplayArray;
+    memDisplayArray = [];
+}
+
+function equals() {
+    calculate()
 }
 
 //Function to populate variables used in operate() function with values from memDisplayArray
@@ -66,13 +60,6 @@ function populateOperate() {
     operator = memDisplayArray[1]
     num2 = memDisplayArray[2] 
     console.log(num1, operator, num2)
-}
-
-//Function to reset num1, num2 and operator
-function resetActiveNumbers(){
-    num1 = 0;
-    num2  = 0;
-    operator = "";
 }
 
 // Function to call calculations by operator
@@ -96,11 +83,11 @@ return result
 
 //Function to populate display w/ chosen digit
 function populateDisp(num) {
-    if (displayNum === 0){ console.log("this?")
+    if (displayNum === 0){
     displayNum = num; 
     } else if (displayNum === result) {
     displayNum = num;
-    }else { console.log("or also this?")
+    }else {
     displayNum = '' + displayNum + num; //Concatenate 
     let a = parseInt(displayNum); //Convert back to integer
     displayNum = a;
@@ -129,6 +116,21 @@ function clearMem(){
     result = "";
     document.getElementById("currentNumber").innerHTML = displayNum;
     document.getElementById("memDisplayArray").innerHTML = memDisplayArray;
+}
+
+//Function to reset num1, num2 and operator
+function resetActiveNumbers(){
+    num1 = 0;
+    num2  = 0;
+    operator = "";
+}
+
+//Subfunction to push displayNum value to memDisplayArray
+displayToMem = (displayNum) => {memDisplayArray.push(displayNum)}
+
+//Subfunction to push operator value to memDisplayArray
+operatorToMem = (operator) => {memDisplayArray.push(operator) 
+    displayNum = 0; //Resets to zero in order to take in new number 
 }
 
 /* //Looping the memory to find  values to feed to operate function

@@ -37,6 +37,7 @@ body {
     align-items: flex-end;
     height: 50px;
     padding: 0px 20px 0px;
+    overflow: auto;
 }
 
 .memoryDisplay {

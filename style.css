@@ -40,6 +40,7 @@ body {
 }
 
 .memoryDisplay {
+    height: 11px;
     font-size: small;
     padding-top: 2px;
 }

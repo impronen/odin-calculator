@@ -23,17 +23,12 @@ selectOperator = (a) => {
     
     if (memDisplayArray[0] == []){} //Remove initial value of zero from array  
     if (displayNum === 0){} // Does not add zeroes to memory array
-    if (memDisplayArray[2] === []) {
-        // make something that just updates the array / or display with resul + operator
-    } 
-    
     else if (memDisplayArray[1] === operator){ // If operator has been declared
-    console.log("ELSE IF")
     calculate()
     operator = a
     operatorToMem(operator);
     }
-    else { console.log("ELSE")
+    else { //If no operator has been declared, ie. the user has entered one number and presses operator
     operator = a
     displayToMem(displayNum);
     operatorToMem(operator);
@@ -54,13 +49,15 @@ function calculate() {
     displayToMem(displayNum); 
     populateOperate();
     operate(operator, num1, num2);
+    if (Number.isInteger(result) === false) {
+        result = result.toFixed(2) //Rounding to 2 decimal places
+    }
     displayNum = result
     document.getElementById("currentNumber").innerHTML = displayNum;
-    document.getElementById("memDisplayArray").innerHTML = (`${num1} ${operator} ${num2} = ${result}`)
     resetActiveNumbers();
     memDisplayArray.splice(0, 1, result); //Splice the result as the index [0] of the array. 
     memDisplayArray.splice(1, 5); //Clears the rest of the array
-    
+    document.getElementById("memDisplayArray").innerHTML = memDisplayArray;
 }
 
 //Function to populate variables used in operate() function with values from memDisplayArray
@@ -99,13 +96,14 @@ return result
 
 //Function to populate display w/ chosen digit
 function populateDisp(num) {
-    if (displayNum === 0){
+    if (displayNum === 0){ console.log("this?")
     displayNum = num; 
-} else {
+    } else if (displayNum === result) {
+    displayNum = num;
+    }else { console.log("or also this?")
     displayNum = '' + displayNum + num; //Concatenate 
     let a = parseInt(displayNum); //Convert back to integer
     displayNum = a;
-    displayToMem(displayNum);
 }
 document.getElementById("currentNumber").innerHTML = displayNum;
 };

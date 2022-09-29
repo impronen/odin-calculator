@@ -9,6 +9,8 @@ let num1 = 0;
 let num2  = 0;
 let results = 0;
 
+
+
 document.getElementById("currentNumber").innerHTML = displayNum;
 document.getElementById("memDisplayArray").innerHTML = memDisplayArray;
 
@@ -132,6 +134,16 @@ displayToMem = (displayNum) => {memDisplayArray.push(displayNum)}
 operatorToMem = (operator) => {memDisplayArray.push(operator) 
     displayNum = 0; //Resets to zero in order to take in new number 
 }
+
+
+//Change of color for operator buttons (unfinishedcd)
+
+
+/* function addClassOnSelection() {
+    let rightButton = document.getElementsByClassName('RightButton');
+    rightButton.classList.add("selectedButton");
+}; */
+
 
 /* //Looping the memory to find  values to feed to operate function
 function loopTheMemory(memDisplayArray){

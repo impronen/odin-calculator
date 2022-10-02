@@ -9,8 +9,6 @@ let num1 = 0;
 let num2  = 0;
 let results = 0;
 
-
-
 document.getElementById("currentNumber").innerHTML = displayNum;
 document.getElementById("memDisplayArray").innerHTML = memDisplayArray;
 
@@ -28,6 +26,7 @@ selectOperator = (a) => {
     else if (memDisplayArray[1] === operator){ // If operator has been declared
     calculate()
     operator = a
+    displayToMem(displayNum);
     operatorToMem(operator);
     } else { //If no operator has been declared, ie. the user has entered one number and presses operator
     operator = a
@@ -50,10 +49,6 @@ function calculate() {
     document.getElementById("memDisplayArray").innerHTML = (`${num1} ${operator} ${num2} = ${result}`)
     resetActiveNumbers();
     memDisplayArray = [];
-}
-
-function equals() {
-    calculate()
 }
 
 //Function to populate variables used in operate() function with values from memDisplayArray
@@ -89,13 +84,15 @@ function populateDisp(num) {
     displayNum = num; 
     } else if (displayNum === result) {
     displayNum = num;
-    }else {
+    } else {
     displayNum = '' + displayNum + num; //Concatenate 
-    let a = parseInt(displayNum); //Convert back to integer
+    let a = parseFloat(displayNum); //Convert back to number
     displayNum = a;
 }
 document.getElementById("currentNumber").innerHTML = displayNum;
 };
+
+
 
 //Change negative/positive
 
@@ -136,13 +133,12 @@ operatorToMem = (operator) => {memDisplayArray.push(operator)
 }
 
 
-//Change of color for operator buttons (unfinishedcd)
+//Change of color for operator buttons
 
-
-/* function addClassOnSelection() {
-    let rightButton = document.getElementsByClassName('RightButton');
-    rightButton.classList.add("selectedButton");
-}; */
+function addClassOnSelection() {
+    const element = document.querySelectorAll("RightButton");
+    element.classList.add("selectedButton");
+};
 
 
 /* //Looping the memory to find  values to feed to operate function

@@ -1,4 +1,11 @@
 // Global variables
+const numberButtons = document.querySelectorAll('[numberButton]')
+const operatorButtons = document.querySelectorAll('[operatorButton]')
+const negPosButton = document.getElementById('negativePositive')
+const calculateButton = document.getElementById('calcButton')
+const clearButton = document.getElementById('clear')
+const decimalButton = document.getElementById('decimal')
+
 let result = "";
 let operator = "";
 
@@ -11,6 +18,21 @@ let results = 0;
 
 document.getElementById("currentNumber").innerHTML = displayNum;
 document.getElementById("memDisplayArray").innerHTML = memDisplayArray;
+
+//Event listener for buttons
+
+negPosButton.addEventListener('click', () => negativePositive(displayNum));
+calculateButton.addEventListener('click', () => calculate());
+clearButton.addEventListener('click', () => clearMem());
+decimalButton.addEventListener('click', () => addDecimalPoint());
+
+numberButtons.forEach((button) =>
+    button.addEventListener('click', () => populateDisp(button.textContent))
+)
+
+operatorButtons.forEach((button) =>
+    button.addEventListener('click', () => selectOperator(button.textContent))
+)
 
 //Basic functions
 add = (a, b) => {return a + b}
@@ -83,9 +105,9 @@ return result
 //Function to populate display w/ chosen digit
 function populateDisp(num) {
     if (displayNum === 0){
-    displayNum = num; 
+    displayNum = parseFloat(num); 
     } else if (displayNum === result) {
-    displayNum = num;
+    displayNum = parseFloat(num);
     } else {
     displayNum = '' + displayNum + num; //Concatenate 
     let a = parseFloat(displayNum); //Convert back to number
@@ -102,7 +124,6 @@ function addDecimalPoint() {
 }
 
 //Change negative/positive
-
 function negativePositive(num) {
     if (displayNum < 0) {
         num = Math.abs(displayNum);

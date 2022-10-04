@@ -24,36 +24,36 @@
       <div class="calcAllButtons"><!-- container for all buttons -->
       <div class="calcMainButtons"> <!-- main buttons, numbers & del etc -->
         <div class="mainRow">
-          <button class="mainButton" onclick="clearMem()">clear</button>
-          <button class="mainButton" onclick="negativePositive(displayNum) ">+/-</button>
+          <button class="mainButton" id="clear">clear</button>
+          <button class="mainButton" id="negativePositive">+/-</button>
         </div>
         <div class="mainRow">
-          <button class="mainButton" onclick="populateDisp(7)">7</button>
-          <button class="mainButton" onclick="populateDisp(8)">8</button>
-          <button class="mainButton" onclick="populateDisp(9)">9</button>
+          <button class="mainButton" numberButton>7</button>
+          <button class="mainButton" numberButton>8</button>
+          <button class="mainButton" numberButton>9</button>
         </div>
         <div class="mainRow">
-          <button class="mainButton" onclick="populateDisp(4)">4</button>
-          <button class="mainButton" onclick="populateDisp(5)">5</button>
-          <button class="mainButton" onclick="populateDisp(6)">6</button>
+          <button class="mainButton" numberButton>4</button>
+          <button class="mainButton" numberButton>5</button>
+          <button class="mainButton" numberButton>6</button>
         </div>
         <div class="mainRow">
-          <button class="mainButton" onclick="populateDisp(1)">1</button>
-          <button class="mainButton" onclick="populateDisp(2)">2</button>
-          <button class="mainButton" onclick="populateDisp(3)">3</button>
+          <button class="mainButton" numberButton>1</button>
+          <button class="mainButton" numberButton>2</button>
+          <button class="mainButton" numberButton>3</button>
         </div>
         <div class="mainRow">
-          <button class="mainButton zero" onclick="populateDisp(0)">0</button>
-          <button class="mainButton decimal" onclick="addDecimalPoint()">.</button>
+          <button class="mainButton zero" numberButton>0</button>
+          <button class="mainButton decimal" id="decimal">.</button>
         </div>
       </div>
       
       <div class="calcRightButtons"> <!-- operator buttons / horizontally -->
-        <button class="RightButton" onclick="selectOperator('/')">/</button>
-        <button class="RightButton" onclick="selectOperator('x')">x</button>
-        <button class="RightButton" onclick="selectOperator('-')">-</button>
-        <button class="RightButton" onclick="selectOperator('+')">+</button>
-        <button class="RightButton" onclick="calculate()">=</button>
+        <button class="RightButton" operatorButton>/</button>
+        <button class="RightButton" operatorButton>x</button>
+        <button class="RightButton" operatorButton>-</button>
+        <button class="RightButton" operatorButton>+</button>
+        <button class="RightButton" id="calcButton">=</button>
       </div>
     </div>
     </div>

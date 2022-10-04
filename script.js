@@ -92,7 +92,12 @@ function populateDisp(num) {
 document.getElementById("currentNumber").innerHTML = displayNum;
 };
 
-
+//Adding a decimal point
+function addDecimalPoint() {
+    if (Math.floor(displayNum) !== displayNum) return //Check if decimal has been added
+    displayNum += '.'
+    document.getElementById("currentNumber").innerHTML = displayNum;
+}
 
 //Change negative/positive
 

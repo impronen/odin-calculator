@@ -22,7 +22,7 @@ document.getElementById("memDisplayArray").innerHTML = memDisplayArray;
 //Event listener for buttons
 
 negPosButton.addEventListener('click', () => negativePositive(displayNum));
-calculateButton.addEventListener('click', () => calculate());
+calculateButton.addEventListener('click', () => equals());
 clearButton.addEventListener('click', () => clearMem());
 decimalButton.addEventListener('click', () => addDecimalPoint());
 
@@ -39,6 +39,21 @@ add = (a, b) => {return a + b}
 subtract = (a, b) => {return a - b}
 multiply = (a, b) => {return a * b}
 divide = (a, b) => {return a / b}
+
+//Subfunction to push displayNum value to memDisplayArray
+displayToMem = (displayNum) => {memDisplayArray.push(displayNum)}
+
+//Subfunction to push operator value to memDisplayArray
+operatorToMem = (operator) => {memDisplayArray.push(operator) 
+    displayNum = 0; //Resets to zero in order to take in new number 
+}
+
+//Adding a decimal point
+addDecimalPoint = () => {
+    if (Math.floor(displayNum) !== displayNum) return //Check if decimal has been added
+    displayNum += '.'
+    document.getElementById("currentNumber").innerHTML = displayNum;
+}
 
 //Function to select the operator & move the displayNum & operator to  memDisplayArray
 selectOperator = (a) => {
@@ -58,7 +73,13 @@ selectOperator = (a) => {
     document.getElementById("memDisplayArray").innerHTML = memDisplayArray.join(' '); //Displays the updated array without commas
 }}
 
-//Calculate 
+//Evaluates if operator has been declared and triggers calculate()
+function equals() {
+    if (memDisplayArray[1] === operator){calculate()}
+    else {}
+}
+
+//Calculate - does all the calculating. Triggered either inside selectOperator() or equals()
 function calculate() {
     displayToMem(displayNum); 
     populateOperate();
@@ -98,6 +119,8 @@ switch (operator) {
     case "/":
         result = divide(num1, num2);
         break;
+    case "":
+        break;
 }
 return result
 }
@@ -116,12 +139,7 @@ function populateDisp(num) {
 document.getElementById("currentNumber").innerHTML = displayNum;
 };
 
-//Adding a decimal point
-function addDecimalPoint() {
-    if (Math.floor(displayNum) !== displayNum) return //Check if decimal has been added
-    displayNum += '.'
-    document.getElementById("currentNumber").innerHTML = displayNum;
-}
+
 
 //Change negative/positive
 function negativePositive(num) {
@@ -151,15 +169,6 @@ function resetActiveNumbers(){
     num2  = 0;
     operator = "";
 }
-
-//Subfunction to push displayNum value to memDisplayArray
-displayToMem = (displayNum) => {memDisplayArray.push(displayNum)}
-
-//Subfunction to push operator value to memDisplayArray
-operatorToMem = (operator) => {memDisplayArray.push(operator) 
-    displayNum = 0; //Resets to zero in order to take in new number 
-}
-
 
 //Change of color for operator buttons
 

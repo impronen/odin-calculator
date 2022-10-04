@@ -26,9 +26,9 @@ selectOperator = (a) => {
     else if (memDisplayArray[1] === operator){ // If operator has been declared
     calculate()
     operator = a
-    displayToMem(displayNum);
-    operatorToMem(operator);
-    } else { //If no operator has been declared, ie. the user has entered one number and presses operator
+    displayToMem(displayNum); // Places result to memory
+    operatorToMem(operator); // Places new operator to memory
+    } else { //If no operator has been declared, ie. the user has entered only one number and presses operator
     operator = a
     displayToMem(displayNum);
     operatorToMem(operator);
@@ -42,8 +42,10 @@ function calculate() {
     populateOperate();
     operate(operator, num1, num2);
     if (Number.isInteger(result) === false) {
+        result = parseFloat(result); // Converting to float point, needed for cases where calculating non-integers
         result = result.toFixed(2) //Rounding to 2 decimal places
     }
+    result = parseFloat(result); // Converting to float point, needed for cases where calculating non-integers
     displayNum = result
     document.getElementById("currentNumber").innerHTML = displayNum;
     document.getElementById("memDisplayArray").innerHTML = (`${num1} ${operator} ${num2} = ${result}`)

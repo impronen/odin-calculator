@@ -26,13 +26,12 @@ calculateButton.addEventListener('click', () => equals());
 clearButton.addEventListener('click', () => clearMem());
 decimalButton.addEventListener('click', () => addDecimalPoint());
 
-numberButtons.forEach((button) =>
-    button.addEventListener('click', () => populateDisp(button.textContent))
-)
-
-operatorButtons.forEach((button) =>
-    button.addEventListener('click', () => selectOperator(button.textContent))
-)
+numberButtons.forEach((button) => button.addEventListener('click', () => populateDisp(button.textContent)))
+operatorButtons.forEach((button) => button.addEventListener('click', () => {
+    removeOperatorSelectionStyle()
+    selectOperator(button.textContent) //Operator selection
+    button.classList.add('selectedButton') //Applies a styling class to the selected operator button
+}))
 
 //Basic functions
 add = (a, b) => {return a + b}
@@ -75,8 +74,10 @@ selectOperator = (a) => {
 
 //Evaluates if operator has been declared and triggers calculate()
 function equals() {
-    if (memDisplayArray[1] === operator){calculate()}
-    else {}
+    if (memDisplayArray[1] === operator){
+        calculate()
+        removeOperatorSelectionStyle()
+    } else {}
 }
 
 //Calculate - does all the calculating. Triggered either inside selectOperator() or equals()
@@ -170,12 +171,12 @@ function resetActiveNumbers(){
     operator = "";
 }
 
-//Change of color for operator buttons
-
-function addClassOnSelection() {
-    const element = document.querySelectorAll("RightButton");
-    element.classList.add("selectedButton");
-};
+//Removes the styling from operator button when new one is selected or calculation is done
+function removeOperatorSelectionStyle() {
+    operatorButtons.forEach(function(item) {
+        item.classList.remove('selectedButton')
+      })
+    }
 
 
 /* //Looping the memory to find  values to feed to operate function
